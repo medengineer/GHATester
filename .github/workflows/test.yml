@@ -17,6 +17,6 @@ jobs:
     - uses: actions/checkout@v1
     - name: configure
       run: |
-        powershell Compress-Archive . test.zip
+        powershell Compress-Archive . test1.zip
         ls
       shell: bash

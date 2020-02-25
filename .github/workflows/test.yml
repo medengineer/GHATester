@@ -2,7 +2,7 @@ name: Windows
 
 on:
   push:
-    branches: test
+    branches: master
 
 jobs:
 
@@ -16,27 +16,16 @@ jobs:
     if: github.ref == 'refs/heads/master'
     steps:
     - uses: actions/checkout@v1
-    - name: configure
-      env:
-        bintrayUser: ${{ secrets.bintrayUsername }}
-        bintrayApiKey: ${{ secrets.bintrayApiKey }}
-        build_dir: "Build/Release"
-        repo: "Binaries-Testing"
-        package: "Windows"
-        version: "0.4.6" 
+    - name: download_plugin
       run: |
         echo "I am running from master branch!"
-        user_info="$bintrayUser:$bintrayApiKey"
-        cd $build_dir
         echo "Fetching Neuropixels plugin..."
-        LATEST_VERSION=$(curl -s -X GET https://api.bintray.com/packages/$bintrayUser/neuropixels-pxi/neuropixels-pxi-win/versions/_latest | jq '.name')
+        LATEST_VERSION=$(curl -s -X GET https://api.bintray.com/packages/open-ephys-gui-plugins/neuropixels-pxi/neuropixels-pxi-win/versions/_latest | jq '.name')
         LATEST_VERSION="${LATEST_VERSION:1:${#LATEST_VERSION}-2}"
-        filename=$( curl -s --user $user_info -X GET https://api.bintray.com/packages/${bintrayUser}/neuropixels-pxi/neuropixels-pxi-win/versions/$LATEST_VERSION/files | jq '.[] | .name')
+        filename=$( curl -s -X GET https://api.bintray.com/packages/${bintrayUser}/neuropixels-pxi/neuropixels-pxi-win/versions/$LATEST_VERSION/files | jq '.[] | .name')
         filename="${filename:1:${#filename}-2}"
         curl -L https://dl.bintray.com/${bintrayUser}/${neuropixels-pxi}/${filename} > ${filename}
+        mkdir plugins
         powershell Expand-Archive -Path ${filename} -DestinationPath plugins/
-        zip=${bintrayUser}-${package}-${version}.zip
-        powershell Compress-Archive . ${zip}
-        curl -T $zip --user $user_info https://api.bintray.com/content/${bintrayUser}/${repo}/${package}/${version}/${zip}
-        curl -X POST --user $user_info https://api.bintray.com/content/${bintrayUser}/${repo}/${package}/${version}/publish
+        ls plugins
       shell: bash

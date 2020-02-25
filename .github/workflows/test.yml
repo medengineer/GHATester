@@ -12,16 +12,11 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest]
-    
+
+    if: github.ref == 'refs/heads/master'
     steps:
     - uses: actions/checkout@v1
-    - name: Extract branch name
-      env:
-        branch: ${{ github.head_ref }}
-      shell: bash
-      run: echo $branch
     - name: configure
       run: |
-        powershell Compress-Archive . test1.zip
-        ls
+        echo "I am running from master branch!"
       shell: bash

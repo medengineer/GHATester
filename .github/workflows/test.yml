@@ -20,7 +20,7 @@ jobs:
       run: |
         echo "I am running from master branch!"
         echo "Fetching Neuropixels plugin..."
-        LATEST_VERSION=$(curl -s -X GET https://api.bintray.com/packages/open-ephys-gui-plugins/neuropixels-pxi/neuropixels-pxi-win/versions/_latest | jq '.name')
+        LATEST_VERSION=$(curl -s -X GET https://api.bintray.com/packages/open-ephys-gui-plugins/neuropixels-pxi/neuropixels-pxi-win/versions/_latest | jq '.[] | .name')
         LATEST_VERSION="${LATEST_VERSION:1:${#LATEST_VERSION}-2}"
         filename=$( curl -s -X GET https://api.bintray.com/packages/${bintrayUser}/neuropixels-pxi/neuropixels-pxi-win/versions/$LATEST_VERSION/files | jq '.[] | .name')
         filename="${filename:1:${#filename}-2}"

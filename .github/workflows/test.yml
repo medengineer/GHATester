@@ -21,5 +21,6 @@ jobs:
         echo "I am running from master branch!"
         echo "Fetching Neuropixels plugin..."
         LATEST_VERSION=$(curl -s https://api.bintray.com/packages/open-ephys-gui-plugins/neuropixels-pxi/neuropixels-pxi-win/versions/_latest | jq '.name')
-        echo $LATEST_VERSION
+        LATEST_VERSION="${LATEST_VERSION:1:${#LATEST_VERSION}-2}"
+        echo -e "\nLatest version: $LATEST_VERSION"
       shell: bash

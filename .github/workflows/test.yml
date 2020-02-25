@@ -25,4 +25,8 @@ jobs:
         echo -e "\nLatest version: $LATEST_VERSION"
         filename=$(curl -s https://api.bintray.com/packages/open-ephys-gui-plugins/neuropixels-pxi/neuropixels-pxi-win/versions/$LATEST_VERSION/files | jq '.[] | .name')
         echo -e "\nLatest version filename: $filename"
+        echo -e "\nDownloading latest file..."
+        curl -L https://dl.bintray.com/open-ephys-gui-plugins/neuropixels-pxi/$filename > $filename
+        ls
+
       shell: bash

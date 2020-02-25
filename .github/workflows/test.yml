@@ -15,6 +15,11 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
+    - name: Extract branch name
+      env:
+        branch: ${{ github.head_ref }}
+      shell: bash
+      run: echo $branch
     - name: configure
       run: |
         powershell Compress-Archive . test1.zip

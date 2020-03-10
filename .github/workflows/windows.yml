@@ -18,8 +18,6 @@ jobs:
         curl -L https://dl.bintray.com/open-ephys-gui-plugins/neuropixels-3a/neuropixels-3a-windows_0.1.0-API6.zip --output neuropixels-3a.zip && unzip neuropixels-3a.zip
         curl -L https://dl.bintray.com/open-ephys-gui-plugins/neuropixels-pxi/neuropixels-pxi-windows_0.1.0-API6.zip --output neuropixels-pxi.zip && unzip neuropixels-pxi.zip
         curl -L https://dl.bintray.com/open-ephys-gui-plugins/nidaq-plugin/nidaq-plugin-windows_0.1.0-API6.zip --output nidaq-plugin.zip && unzip nidaq-plugin.zip
- #       curl -L https://dl.bintray.com/open-ephys-gui-plugins/probe-viewer/probe-viewer-windows_0.1.0-API6.zip --output probe-viewer.zip && unzip probe-viewer.zip
- #       curl -L https://dl.bintray.com/open-ephys-gui-plugins/StreamMuxer/StreamMuxer-windows_0.1.0-API6.zip --output StreamMuxer.zip && unzip StreamMuxer.zip
         echo "Plugins:"  
         ls plugins
         echo "Shared:"

@@ -15,17 +15,5 @@ jobs:
     - uses: actions/checkout@v1
     - name: package
       run : |
-        curl -L https://dl.bintray.com/open-ephys-gui-plugins/neuropixels-pxi/neuropixels-pxi-windows_0.1.0-API6.zip > installing.zip && unzip installing.zip
-        curl -L https://dl.bintray.com/open-ephys-gui-plugins/neuropixels-3a/neuropixels-3a-windows_0.1.0-API6.zip > installing.zip && unzip installing.zip
-        curl -L https://dl.bintray.com/open-ephys-gui-plugins/ni-daq/ni-daq-windows_0.1.0-API6.zip > installing.zip && unzip installing.zip
-        curl -L https://dl.bintray.com/open-ephys-gui-plugins/StreamMuxer/StreamMuxer-windows_0.1.0-API6.zip > installing.zip && unzip installing.zip
-        curl -L https://dl.bintray.com/open-ephys-gui-plugins/HDF5Plugins/HDF5Plugins-windows_0.1.0-API6.zip > installing.zip && unzip installing.zip
-        echo "Plugins"
-        ls plugins
-        echo "Shared"
-        ls shared
-        if [ cat output.txt | grep FAILED ]; then
-          echo "!!!!!!!!!!!!!!!FAILED TO LOAD SOME PLUGINS!!!!!!!!!!!!!!!!"
-        else
-          echo "ALL LOADED SUCCESSFULLY!"
-        fi
+        curl -L https://dl.bintray.com/open-ephys-gui-plugins/neuropixels-pxi/neuropixels-pxi-windows_0.1.0-API6.zip > installing.zip
+        unzip installing.zip

@@ -15,9 +15,12 @@ jobs:
     - uses: actions/checkout@v1
     - name: package
       run : |
-        curl -L https://dl.bintray.com/open-ephys-gui-plugins/StreamMuxer/StreamMuxer-windows_0.1.0-API6.zip --output test.zip
-        echo "Before unzip"
-        ls
-        unzip test.zip
-        echo "After unzip"
-        ls
+        curl -L https://dl.bintray.com/open-ephys-gui-plugins/neuropixels-3a/neuropixels-3a-windows_0.1.0-API6.zip --output test.zip && unzip test.zip
+        curl -L https://dl.bintray.com/open-ephys-gui-plugins/neuropixels-pxi/neuropixels-pxi-windows_0.1.0-API6.zip --output test.zip && unzip test.zip
+        curl -L https://dl.bintray.com/open-ephys-gui-plugins/ni-daq/ni-daq-windows_0.1.0-API6.zip --output test.zip && unzip test.zip
+        curl -L https://dl.bintray.com/open-ephys-gui-plugins/StreamMuxer/StreamMuxer-windows_0.1.0-API6.zip --output test.zip && unzip test.zi
+        curl -L https://dl.bintray.com/open-ephys-gui-plugins/ProbeViewer/ProbeViewer-windows_0.1.0-API6.zip --output test.zip && unzip test.zip
+        echo "Plugins"
+        ls plugins
+        echo "Shared"
+        ls shared

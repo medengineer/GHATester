@@ -18,11 +18,10 @@ jobs:
         bintrayUser: ${{ secrets.bintrayUsername }}
         bintrayApiKey: ${{ secrets.bintrayApiKey }}
       run : |
-        curl -L https://dl.bintray.com/open-ephys-gui-plugins/neuropixels-3a/neuropixels-3a-windows_0.1.0-API6.zip --output neuropixels-3a.zip && unzip neuropixels-3a.zip
-        curl -L https://dl.bintray.com/open-ephys-gui-plugins/neuropixels-pxi/neuropixels-pxi-windows_0.1.0-API6.zip --output neuropixels-pxi.zip && unzip neuropixels-pxi.zip
-        curl -L https://dl.bintray.com/open-ephys-gui-plugins/nidaq-plugin/nidaq-plugin-windows_0.1.0-API6.zip --output nidaq-plugin.zip && unzip nidaq-plugin.zip
         gui_ver=0.4.5
         zipfile=open-ephys-${gui_ver}-windows.zip
+        mkdir plugins
+        touch plugins/test.txt
         powershell Compress-Archive -Path "plugins" -DestinationPath ${zipfile}
         if [ -d "shared" ]
         then

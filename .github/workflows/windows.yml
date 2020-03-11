@@ -18,8 +18,8 @@ jobs:
         curl -L https://dl.bintray.com/open-ephys-gui-plugins/neuropixels-3a/neuropixels-3a-windows_0.1.0-API6.zip --output neuropixels-3a.zip && unzip neuropixels-3a.zip
         curl -L https://dl.bintray.com/open-ephys-gui-plugins/neuropixels-pxi/neuropixels-pxi-windows_0.1.0-API6.zip --output neuropixels-pxi.zip && unzip neuropixels-pxi.zip
         curl -L https://dl.bintray.com/open-ephys-gui-plugins/nidaq-plugin/nidaq-plugin-windows_0.1.0-API6.zip --output nidaq-plugin.zip && unzip nidaq-plugin.zip
-        gui_ver=$(grep -rnw ../../plugin-GUI/Source -e '#define PLUGIN_API_VER' | grep -Eo "[0-9]*" | tail -1)
-        zipfile=open-ephys-$gui_ver-windows.zip
+        gui_ver=0.4.5
+        zipfile=open-ephys-${gui_ver}-windows.zip
         powershell Compress-Archive -Path "plugins" -DestinationPath ${zipfile}
         if [ -d "shared" ]
         then
@@ -28,4 +28,4 @@ jobs:
         user_info="$bintrayUser:$bintrayApiKey"
         curl -T $zipfile --user $user_info https://api.bintray.com/content/open-ephys-gui/Test/Test-windows/$gui_ver/$zipfile
         curl -X POST --user $user_info https://api.bintray.com/content/open-ephys-gui/Test/Test-windows/$gui_ver/publish
-        exit 0
+    shell: bash

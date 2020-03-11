@@ -28,4 +28,6 @@ jobs:
         user_info="$bintrayUser:$bintrayApiKey"
         curl -T $zipfile --user $user_info https://api.bintray.com/content/open-ephys-gui/Test/Test-windows/$gui_ver/$zipfile
         curl -X POST --user $user_info https://api.bintray.com/content/open-ephys-gui/Test/Test-windows/$gui_ver/publish
-    shell: bash
+      shell: bash
+
+name: Windows

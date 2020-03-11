@@ -23,11 +23,11 @@ jobs:
         curl -L https://dl.bintray.com/open-ephys-gui-plugins/nidaq-plugin/nidaq-plugin-windows_0.1.0-API6.zip --output nidaq-plugin.zip
         curl -L https://dl.bintray.com/open-ephys-gui-plugins/probe-viewer/probe-viewer-windows_0.1.0-API6.zip --output probe-viewer.zip 
         curl -L https://dl.bintray.com/open-ephys-gui-plugins/StreamMuxer/StreamMuxer-windows_0.1.0-API6.zip --output stream-muxer.zip
-        unzip -f neuropixels-3a.zip -d .
-        unzip -f neuropixels-pxi.zip -d .
-        unzip -f nidaq-plugin.zip -d .
-        unzip -f stream-muxer.zip -d .
-        unzip -f probe-viewer.zip -d .
+        powershell Expand-Archive neuropixels-3a.zip -DestinationPath .
+        powershell Expand-Archive neuropixels-pxi.zip -DestinationPath .
+        powershell Expand-Archive nidaq-plugin.zip -DestinationPath .
+        powershell Expand-Archive stream-muxer.zip -DestinationPath .
+        powershell Expand-Archive probe-viewer.zip -DestinationPath .
         gui_ver=0.4.6
         zipfile=open-ephys-${gui_ver}-windows.zip
         powershell Compress-Archive -Path "plugins" -DestinationPath ${zipfile}

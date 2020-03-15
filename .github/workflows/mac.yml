@@ -1,0 +1,19 @@
+name: mac
+
+on: 
+  push:
+
+jobs:
+
+  build-mac:
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: setup
+      run: |
+        ls /Users/runner
